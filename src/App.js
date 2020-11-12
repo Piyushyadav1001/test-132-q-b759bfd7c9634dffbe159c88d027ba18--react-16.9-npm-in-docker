@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./index.css";
 function App() {
-  const [result, setResult] = useState("0");
+  const [results, setResult] = useState("0");
   const inputRef = useRef(null);
   useEffect(() => inputRef.current.focus());
   function handleClick(e) {
-    setResult(result.concat(e.target.name));
+    setResult(results.concat(e.target.name));
   }
   function backspace() {
-    setResult(result.slice(0, result.length - 1));
+    setResult(results.slice(0, results.length - 1));
   }
   function clear() {
     setResult("");
@@ -23,20 +23,20 @@ function App() {
   return (
     <div className="calc-app">
       <form>
-        <input type="text" value={result} ref={inputRef}></input>
+        <input id="result" type="text" value={results} ref={inputRef}></input>
       </form>
       <div className="keypad">
         <button id="clear" onClick={clear}>
-          Clear
+          AC
         </button>
-        <button id="backspace" onClick={backspace}>
-          C
+        <button id="delete" onClick={backspace}>
+          delete
         </button>
-        <button id="result" onClick={calculate}>
-          result
+        <button id="equal" onClick={calculate}>
+          =
         </button>
-        <button name="+" onClick={handleClick} id="+">
-          +
+        <button name="/" onClick={handleClick} id="divide">
+          /
         </button>
         <button name="7" onClick={handleClick} id="7">
           7
@@ -47,8 +47,8 @@ function App() {
         <button name="9" onClick={handleClick} id="9">
           9
         </button>
-        <button name="-" onClick={handleClick} id="-">
-          -
+        <button name="*" onClick={handleClick} id="multiply">
+          *
         </button>
         <button name="4" onClick={handleClick} id="4">
           4
@@ -59,8 +59,8 @@ function App() {
         <button name="6" onClick={handleClick} id="6">
           6
         </button>
-        <button name="*" onClick={handleClick} id="*">
-          *
+        <button name="-" onClick={handleClick} id="subtract">
+          -
         </button>
         <button name="1" onClick={handleClick} id="1">
           1
@@ -71,14 +71,17 @@ function App() {
         <button name="3" onClick={handleClick} id="3">
           3
         </button>
-        <button name="/" onClick={handleClick} id="/">
-          /
+        <button name="+" onClick={handleClick} id="add">
+          +
         </button>
-        <button name="0" onClick={handleClick} id="zero">
+        <button name="0" onClick={handleClick} id="0">
           0
         </button>
-        <button name="." onClick={handleClick} id="decimal">
+        <button name="." onClick={handleClick} id="dot">
           .
+        </button>
+        <button name="%" onClick={handleClick} id="percentile">
+          %
         </button>
       </div>
     </div>
